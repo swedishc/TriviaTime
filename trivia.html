@@ -46,7 +46,7 @@
 
             const question = data[0];
             const correctAnswer = data[1];
-            const options = data.slice(1, 5); // Assuming options start from column B and end at column E
+            const options = data.slice(1); // Assuming options start from column B
 
             const questionDiv = document.createElement('div');
             questionDiv.classList.add('question');
@@ -57,7 +57,11 @@
 
             options.forEach(option => {
                 const button = document.createElement('button');
-                button.textContent = option;
+                
+                // Split the text at the first line break and wrap the first part in <strong>
+                const parts = option.split('\n');
+                button.innerHTML = `<strong>${parts[0]}</strong>${parts.length > 1 ? '<br>' + parts.slice(1).join('<br>') : ''}`;
+
                 button.addEventListener('click', () => checkAnswer(option, correctAnswer));
                 questionDiv.appendChild(button);
             });
