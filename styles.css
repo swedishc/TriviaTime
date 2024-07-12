@@ -1,37 +1,13 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #000000; /* Background color */
-    color: #ffffff; /* Main text color */
+    background-color: #000000; /* Corrected hex code */
+    color: #ffffff; /* Make the main text white */
     margin: 0;
     padding: 20px;
     text-align: center; /* Center align all text */
 }
-
-.question-item {
-    margin-bottom: 10px;
-}
-
-.question-item a {
-    display: block; /* Ensure each link is on a new line */
-    width: 100%; /* Make the link full width within its container */
-    max-width: 400px; /* Limit the max width for better appearance */
-    padding: 10px 20px; /* Adjust padding for better appearance */
-    margin: 10px auto; /* Center the link horizontally and add some margin for spacing */
-    background-color: #1a1a1a; /* Dark grey, almost black */
-    color: #ffffff; /* White text */
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 5px;
-    text-align: center; /* Center the text inside the link */
-    cursor: pointer;
-}
-
-.question-item a:hover {
-    background-color: #333333; /* Slightly lighter grey for hover effect */
-}
-
 .question {
-    background-color: #000000; /* Background color */
+    background-color: #000000; /* Corrected hex code */
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 5px;
@@ -40,31 +16,26 @@ body {
     display: inline-block; /* Make the question div inline-block to center it */
     width: 80%; /* Adjust width to ensure it does not span the entire page */
 }
-
 .question p {
     font-size: 18px;
     color: #ffffff; /* Ensure the question text is white */
 }
-
 button {
-    display: block; /* Ensure each button is on a new line */
-    width: 100%; /* Make the button full width within its container */
-    max-width: 400px; /* Limit the max width for better appearance */
+    display: inline-block; /* Center the buttons */
+    width: auto; /* Let the button width adjust to the content */
     padding: 10px 20px; /* Adjust padding for better appearance */
-    margin: 10px auto; /* Center the button horizontally and add some margin for spacing */
+    margin: 10px; /* Add some margin for spacing */
     font-size: 16px;
-    background-color: #1a1a1a; /* Dark grey, almost black */
+    background-color: #000000; /* Black background */
     color: #ffffff; /* White text */
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    text-align: center; /* Center the text inside the button */
+    text-align: left; /* Ensure button text is left-aligned */
 }
-
 button strong {
     font-weight: bold; /* Bold the text inside <strong> */
 }
-
 button:hover {
-    background-color: #333333; /* Slightly lighter grey for hover effect */
+    background-color: #333333; /* Slightly lighter black for hover effect */
 }
