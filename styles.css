@@ -1,11 +1,11 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: ##000000;
+    background-color: #000000; /* Corrected from ##000000 to #000000 */
     margin: 0;
     padding: 20px;
 }
 .question {
-    background-color: ##000000;
+    background-color: #000000; /* Corrected from ##000000 to #000000 */
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 5px;
@@ -20,12 +20,12 @@ button {
     padding: 10px;
     margin: 5px 0;
     font-size: 16px;
-    background-color: #ABD5D7;
-    color: #ffffff;
+    background-color: #000000; /* Set button background color to black */
+    color: #ffffff; /* Set button text color to white */
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 button:hover {
-    background-color: #45818E;
+    background-color: #333333; /* Slightly lighter black for hover effect */
 }
