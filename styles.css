@@ -17,6 +17,7 @@ body {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+    white-space: pre-line; /* Preserve line breaks */
 }
 .question-item button:hover {
     background-color: #333333; /* Slightly lighter black for hover effect */
@@ -46,6 +47,7 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    white-space: pre-line; /* Preserve line breaks */
 }
 button:hover {
     background-color: #333333; /* Slightly lighter black for hover effect */
