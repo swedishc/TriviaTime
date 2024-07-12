@@ -37,7 +37,7 @@
             data.forEach((row, index) => {
                 const question = row[0];
                 const correctAnswer = row[1];
-                const options = row.slice(3); // Assuming options start from column B
+                const options = row.slice(1); // Assuming options start from column B
 
                 const questionDiv = document.createElement('div');
                 questionDiv.classList.add('question');
