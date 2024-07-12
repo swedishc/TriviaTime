@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trivia Time</title>
+    <title>Select Trivia Question</title>
     <link rel="stylesheet" href="styles.css">
     <script>
         async function fetchData() {
             const sheetId = '118jnifYhl0TEggdDU741h9N9sBERuRhlWK8kTqBr9f0';  // Replace with your actual Sheet ID
             const apiKey = 'AIzaSyB-iZV77P8zbYis4zIoyuiUwvAzP_F0hLU';    // Replace with your actual API Key
-            const range = 'Sheet1!A1:E10';    // Adjust range according to your sheet
+            const range = 'Sheet1!A1:A10';    // Adjust range according to your sheet
             const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
 
             try {
@@ -28,60 +28,38 @@
             }
         }
 
-        async function loadTrivia() {
+        async function loadQuestions() {
             const data = await fetchData();
             if (!data) {
-                document.getElementById('trivia-container').textContent = 'Failed to load trivia questions.';
+                document.getElementById('question-list').textContent = 'Failed to load trivia questions.';
                 return;
             }
 
-            const triviaContainer = document.getElementById('trivia-container');
-            triviaContainer.innerHTML = '';  // Clear any previous content
+            const questionList = document.getElementById('question-list');
+            questionList.innerHTML = '';  // Clear any previous content
 
             data.forEach((row, index) => {
                 const question = row[0];
-                const correctAnswer = row[1];
-                const options = row.slice(1); // Assuming options start from column B
 
-                const questionDiv = document.createElement('div');
-                questionDiv.classList.add('question');
+                const questionItem = document.createElement('div');
+                questionItem.classList.add('question-item');
 
-                const questionText = document.createElement('p');
-                questionText.textContent = `${index + 1}. ${question}`;
-                questionDiv.appendChild(questionText);
+                const questionLink = document.createElement('a');
+                questionLink.href = `trivia.html?question=${index + 1}`; // Link to the trivia game page with the question index
+                questionLink.textContent = `${index + 1}. ${question}`;
 
-                options.forEach(option => {
-                    const button = document.createElement('button');
-                    button.textContent = option;
-                    button.addEventListener('click', () => checkAnswer(option, correctAnswer));
-                    questionDiv.appendChild(button);
-                });
-
-                triviaContainer.appendChild(questionDiv);
+                questionItem.appendChild(questionLink);
+                questionList.appendChild(questionItem);
             });
         }
 
-        function checkAnswer(selected, correct) {
-            if (selected === correct) {
-                alert('Correct!');
-            } else {
-                alert('Wrong answer. Try again!');
-            }
-        }
-
-        // Function to trigger Apps Script function
-        function triggerAppsScript() {
-            google.script.run.updateSheet();
-        }
-
-        document.addEventListener('DOMContentLoaded', loadTrivia);
+        document.addEventListener('DOMContentLoaded', loadQuestions);
     </script>
 </head>
 <body>
-    <h1>Trivia Time</h1>
-    <div id="trivia-container">
-        <!-- Trivia questions will be inserted here -->
+    <h1>Select a Trivia Question</h1>
+    <div id="question-list">
+        <!-- List of trivia questions will be inserted here -->
     </div>
-    <button onclick="triggerAppsScript()">Update Sheet</button> <!-- Button to trigger Apps Script -->
 </body>
 </html>
