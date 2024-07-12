@@ -14,7 +14,7 @@
         async function fetchData(questionIndex) {
             const sheetId = '118jnifYhl0TEggdDU741h9N9sBERuRhlWK8kTqBr9f0';  // Replace with your actual Sheet ID
             const apiKey = 'AIzaSyB-iZV77P8zbYis4zIoyuiUwvAzP_F0hLU';    // Replace with your actual API Key
-            const range = `Sheet1!A${questionIndex}:E${questionIndex}`;    // Adjust range according to the selected question
+            const range = `Sheet1!A${questionIndex}:G${questionIndex}`;    // Adjust range according to the selected question
             const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
 
             try {
@@ -46,7 +46,7 @@
 
             const question = data[0];
             const correctAnswer = data[1];
-            const options = data.slice(1); // Assuming options start from column B
+            const options = data.slice(1, 5); // Assuming options start from column B and end at column E
 
             const questionDiv = document.createElement('div');
             questionDiv.classList.add('question');
