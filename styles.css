@@ -6,24 +6,6 @@ body {
     padding: 20px;
     text-align: center; /* Center align all text */
 }
-.question-item {
-    margin-bottom: 10px;
-}
-.question-item button {
-    background-color: #000000; /* Black background */
-    color: #ffffff; /* White text */
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-.question-item button div {
-    white-space: pre-wrap; /* Preserve line breaks */
-}
-.question-item button:hover {
-    background-color: #333333; /* Slightly lighter black for hover effect */
-}
 .question {
     background-color: #000000; /* Corrected hex code */
     padding: 20px;
@@ -49,6 +31,10 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    text-align: left; /* Ensure button text is left-aligned */
+}
+button strong {
+    font-weight: bold; /* Bold the text inside <strong> */
 }
 button:hover {
     background-color: #333333; /* Slightly lighter black for hover effect */
