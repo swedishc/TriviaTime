@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Time</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function getQueryParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        async function fetchData(questionIndex) {
+            const sheetId = '118jnifYhl0TEggdDU741h9N9sBERuRhlWK8kTqBr9f0';  // Replace with your actual Sheet ID
+            const apiKey = 'AIzaSyB-iZV77P8zbYis4zIoyuiUwvAzP_F0hLU';    // Replace with your actual API Key
+            const range = `Sheet1!A${questionIndex}:E${questionIndex}`;    // Adjust range according to the selected question
+            const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
+
+            try {
+                const response = await fetch(url);
+                console.log('Response:', response);
+                const data = await response.json();
+                if (data.error) {
+                    console.error('API Error:', data.error);
+                    return null;
+                }
+                console.log('Data:', data);
+                return data.values[0];
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                return null;
+            }
+        }
+
+        async function loadTrivia() {
+            const questionIndex = getQueryParameter('question');
+            const data = await fetchData(questionIndex);
+            if (!data) {
+                document.getElementById('trivia-container').textContent = 'Failed to load trivia question.';
+                return;
+            }
+
+            const triviaContainer = document.getElementById('trivia-container');
+            triviaContainer.innerHTML = '';  // Clear any previous content
+
+            const question = data[0];
+            const correctAnswer = data[1];
+            const options = data.slice(1); // Assuming options start from column B
+
+            const questionDiv = document.createElement('div');
+            questionDiv.classList.add('question');
+
+            const questionText = document.createElement('p');
+            questionText.textContent = question;
+            questionDiv.appendChild(questionText);
+
+            options.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.addEventListener('click', () => checkAnswer(option, correctAnswer));
+                questionDiv.appendChild(button);
+            });
+
+            triviaContainer.appendChild(questionDiv);
+        }
+
+        function checkAnswer(selected, correct) {
+            if (selected === correct) {
+                alert('Correct!');
+            } else {
+                alert('Wrong answer. Try again!');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadTrivia);
+    </script>
+</head>
+<body>
+    <h1>Trivia Time</h1>
+    <div id="trivia-container">
+        <!-- Trivia question will be inserted here -->
+    </div>
+</body>
+</html>
