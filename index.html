@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select Trivia Question v2</title>
+    <title>Select Trivia Question</title>
     <link rel="stylesheet" href="styles.css">
     <script>
         async function fetchData() {
@@ -42,14 +42,16 @@
                 const question = row[0];
                 let buttonText = row[6]; // Text for the button from column G
 
-                // Replace %Z% with line breaks
-                buttonText = buttonText.replace(/%Z%/g, '\n');
+                // Replace %Z% with <br> for line breaks
+                buttonText = buttonText.replace(/%Z%/g, '<br>');
 
                 const questionItem = document.createElement('div');
                 questionItem.classList.add('question-item');
 
                 const questionButton = document.createElement('button');
-                questionButton.textContent = buttonText;
+                const buttonContent = document.createElement('div');
+                buttonContent.innerHTML = buttonText;
+                questionButton.appendChild(buttonContent);
                 questionButton.onclick = () => {
                     window.location.href = `trivia.html?question=${index + 1}`;
                 };
