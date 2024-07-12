@@ -9,13 +9,17 @@ body {
 .question-item {
     margin-bottom: 10px;
 }
-.question-item a {
-    color: #ffffff; /* White text for links */
-    text-decoration: none;
-    font-size: 18px;
+.question-item button {
+    background-color: #000000; /* Black background */
+    color: #ffffff; /* White text */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
 }
-.question-item a:hover {
-    text-decoration: underline;
+.question-item button:hover {
+    background-color: #333333; /* Slightly lighter black for hover effect */
 }
 .question {
     background-color: #000000; /* Corrected hex code */
