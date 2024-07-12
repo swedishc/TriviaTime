@@ -40,7 +40,10 @@
 
             data.forEach((row, index) => {
                 const question = row[0];
-                const buttonText = row[6]; // Text for the button from column G
+                let buttonText = row[6]; // Text for the button from column G
+
+                // Replace %Z% with line breaks
+                buttonText = buttonText.replace(/%Z%/g, '\n');
 
                 const questionItem = document.createElement('div');
                 questionItem.classList.add('question-item');
