@@ -1,27 +1,44 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #000000; /* Corrected from ##000000 to #000000 */
+    background-color: #000000; /* Corrected hex code */
+    color: #ffffff; /* Make the main text white */
     margin: 0;
     padding: 20px;
+    text-align: center; /* Center align all text */
+}
+.question-item {
+    margin-bottom: 10px;
+}
+.question-item a {
+    color: #ffffff; /* White text for links */
+    text-decoration: none;
+    font-size: 18px;
+}
+.question-item a:hover {
+    text-decoration: underline;
 }
 .question {
-    background-color: #000000; /* Corrected from ##000000 to #000000 */
+    background-color: #000000; /* Corrected hex code */
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Left align text inside the question div */
+    display: inline-block; /* Make the question div inline-block to center it */
+    width: 80%; /* Adjust width to ensure it does not span the entire page */
 }
 .question p {
     font-size: 18px;
+    color: #ffffff; /* Ensure the question text is white */
 }
 button {
-    display: block;
-    width: 10%;
-    padding: 10px;
-    margin: 5px 0;
+    display: inline-block; /* Center the buttons */
+    width: auto; /* Let the button width adjust to the content */
+    padding: 10px 20px; /* Adjust padding for better appearance */
+    margin: 10px; /* Add some margin for spacing */
     font-size: 16px;
-    background-color: #000000; /* Set button background color to black */
-    color: #ffffff; /* Set button text color to white */
+    background-color: #000000; /* Black background */
+    color: #ffffff; /* White text */
     border: none;
     border-radius: 5px;
     cursor: pointer;
