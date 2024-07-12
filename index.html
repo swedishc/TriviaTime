@@ -9,7 +9,7 @@
         async function fetchData() {
             const sheetId = '118jnifYhl0TEggdDU741h9N9sBERuRhlWK8kTqBr9f0';  // Replace with your actual Sheet ID
             const apiKey = 'AIzaSyB-iZV77P8zbYis4zIoyuiUwvAzP_F0hLU';    // Replace with your actual API Key
-            const range = 'Sheet1!A1:A10';    // Adjust range according to your sheet
+            const range = 'Sheet1!A1:G10';    // Adjust range according to your sheet
             const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
 
             try {
@@ -40,15 +40,18 @@
 
             data.forEach((row, index) => {
                 const question = row[0];
+                const buttonText = row[6]; // Text for the button from column G
 
                 const questionItem = document.createElement('div');
                 questionItem.classList.add('question-item');
 
-                const questionLink = document.createElement('a');
-                questionLink.href = `trivia.html?question=${index + 1}`; // Link to the trivia game page with the question index
-                questionLink.textContent = `${index + 1}. ${question}`;
+                const questionButton = document.createElement('button');
+                questionButton.textContent = buttonText;
+                questionButton.onclick = () => {
+                    window.location.href = `trivia.html?question=${index + 1}`;
+                };
 
-                questionItem.appendChild(questionLink);
+                questionItem.appendChild(questionButton);
                 questionList.appendChild(questionItem);
             });
         }
