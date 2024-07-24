@@ -1,13 +1,13 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #5a5a5a; /* Corrected hex code */
+    background-color: #000000; /* Corrected hex code */
     color: #ffffff; /* Make the main text white */
     margin: 0;
     padding: 20px;
     text-align: center; /* Center align all text */
 }
 .question {
-    background-color: #808080; /* Corrected hex code */
+    background-color: #000000; /* Corrected hex code */
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 5px;
