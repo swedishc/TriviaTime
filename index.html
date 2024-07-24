@@ -9,7 +9,7 @@
         async function fetchData() {
             const sheetId = '118jnifYhl0TEggdDU741h9N9sBERuRhlWK8kTqBr9f0';  // Replace with your actual Sheet ID
             const apiKey = 'AIzaSyB-iZV77P8zbYis4zIoyuiUwvAzP_F0hLU';    // Replace with your actual API Key
-            const range = 'Sheet1!A1:F4';    // Adjust range according to your sheet
+            const range = 'Sheet1!A1:G4';    // Adjust range according to your sheet
             const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
 
             try {
@@ -38,8 +38,7 @@
 
             data.forEach((row, index) => {
                 const question = row[0];
-                const answers = row.slice(1, 5); // Assuming answers are in columns B to E
-                const correctAnswer = row[5]; // Assuming the correct answer is in column F
+                const links = row.slice(6, 10); // Assuming links are in columns G, H, I, and J
 
                 const questionItem = document.createElement('div');
                 questionItem.classList.add('question-item');
@@ -49,17 +48,15 @@
 
                 questionItem.appendChild(questionText);
 
-                answers.forEach((answer, answerIndex) => {
-                    const answerButton = document.createElement('button');
-                    answerButton.textContent = answer;
-                    answerButton.onclick = () => {
-                        if (answer === correctAnswer) {
-                            alert('Correct!');
-                        } else {
-                            alert('Wrong answer. Try again!');
-                        }
-                    };
-                    questionItem.appendChild(answerButton);
+                links.forEach((link, linkIndex) => {
+                    if (link) {
+                        const linkButton = document.createElement('button');
+                        linkButton.textContent = `Answer ${linkIndex + 1}`;
+                        linkButton.onclick = () => {
+                            window.location.href = link;
+                        };
+                        questionItem.appendChild(linkButton);
+                    }
                 });
 
                 questionList.appendChild(questionItem);
@@ -72,7 +69,7 @@
 <body>
     <h1>Select a Trivia Question</h1>
     <div id="question-list">
-        <!-- List of trivia questions and answers will be inserted here -->
+        <!-- List of trivia questions and answer buttons will be inserted here -->
     </div>
 </body>
 </html>
