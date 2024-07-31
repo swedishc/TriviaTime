@@ -44,11 +44,13 @@
                 const questionItem = document.createElement('div');
                 questionItem.classList.add('question-item');
 
-                const questionLink = document.createElement('a');
-                questionLink.href = `trivia.html?question=${index + 1}`; // Link to the trivia game page with the question index
-                questionLink.textContent = `${question}`;
+                const questionButton = document.createElement('button');
+                questionButton.textContent = `${question}`;
+                questionButton.addEventListener('click', () => {
+                    window.location.href = `trivia.html?question=${index + 1}`;
+                });
 
-                questionItem.appendChild(questionLink);
+                questionItem.appendChild(questionButton);
                 questionList.appendChild(questionItem);
             });
         }
