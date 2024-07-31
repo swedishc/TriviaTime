@@ -46,7 +46,7 @@
 
                 const questionLink = document.createElement('a');
                 questionLink.href = `trivia.html?question=${index + 1}`; // Link to the trivia game page with the question index
-                questionLink.textContent = `${index + 1}. ${question}`;
+                questionLink.textContent = `${question}`;
 
                 questionItem.appendChild(questionLink);
                 questionList.appendChild(questionItem);
