@@ -45,7 +45,7 @@
                 questionItem.classList.add('question-item');
 
                 const questionButton = document.createElement('button');
-                questionButton.textContent = `${question}`;
+                questionButton.innerHTML = `${question.replace(/\\n/g, '<br>')}`;
                 questionButton.addEventListener('click', () => {
                     window.location.href = `trivia.html?question=${index + 1}`;
                 });
